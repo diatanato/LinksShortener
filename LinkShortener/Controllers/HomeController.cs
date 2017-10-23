@@ -30,6 +30,7 @@ namespace LinkShortener.Controllers
                 {
                     return Redirect(mUrlStart.Any(m => link.StartsWith(m)) ? link : mUrlStart[0] + link);
                 }
+                return Redirect("/");
             }
             return View();
         }

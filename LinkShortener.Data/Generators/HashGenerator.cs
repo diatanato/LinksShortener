@@ -6,8 +6,8 @@ namespace LinkShortener.Data.Generators
 
     public class HashGenerator : IHashGenerator
     {
-        private readonly Random mRandom = new Random();
-        private const String mChars = "abcdefghijclmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        private readonly Random mRandom = new Random(Guid.NewGuid().GetHashCode());
+        private const String Chars = "abcdefghijclmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         /// <summary>
         /// В данном случае генерируем уникальную строку без учета исходника, что даст возможность хранить одинаковые ссылки для 
@@ -26,7 +26,7 @@ namespace LinkShortener.Data.Generators
 
             for (int i = 0; i < size; i++)
             {
-                buffer[i] = mChars[mRandom.Next(mChars.Length)];
+                buffer[i] = Chars[mRandom.Next(Chars.Length)];
             }
             return new String(buffer);
         }
