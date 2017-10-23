@@ -7,6 +7,8 @@ using System.Web.Routing;
 
 namespace LinkShortener
 {
+    using Controllers;
+
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
@@ -16,6 +18,30 @@ namespace LinkShortener
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InjectionConfig.RegisterControllers();
+        }
+
+        protected void Application_PreRequestHandlerExecute(Object sender, EventArgs e)
+        {
+            var userCookie = HttpContext.Current.Request.Cookies[LinksController.UserKey];
+            if (userCookie == null)
+            {
+                userCookie = new HttpCookie(LinksController.UserKey)
+                {
+                    Value = Guid.NewGuid().ToString(),
+                    Expires = DateTime.Now.AddYears(1)
+                };
+                HttpContext.Current.Request.Cookies.Add(userCookie);
+                HttpContext.Current.Response.Cookies.Add(userCookie);
+            }
+            else
+            {
+                Guid userkey;
+                if (!Guid.TryParse(userCookie.Value, out userkey))
+                {
+                    userCookie.Value = Guid.NewGuid().ToString();
+                    HttpContext.Current.Response.Cookies[LinksController.UserKey].Value = userCookie.Value;
+                }
+            }
         }
     }
 }

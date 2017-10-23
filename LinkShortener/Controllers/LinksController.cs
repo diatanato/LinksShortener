@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Configuration;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace LinkShortener.Controllers
 {
-    using Models.RequestPatameters.Links;
-
-    using Common.Interfaces.Models;
     using Common.Interfaces.Services;
+
+    using Models.RequestPatameters.Links;
 
     public class LinksController : ApiController
     {
+        public static readonly String UserKey = "userkey";
+
         private readonly ILinksService mLinkService;
 
         public LinksController(ILinksService linkService)
@@ -21,7 +24,7 @@ namespace LinkShortener.Controllers
         [HttpPost]
         public async Task<String> Create(CreateRequestParameter param)
         {
-            return await mLinkService.Create(param.Link, Guid.NewGuid());
+            return ConfigurationManager.AppSettings["RealHost"] + await mLinkService.Create(param.Link, Guid.Parse(HttpContext.Current.Request.Cookies[UserKey].Value));
         }
     }
 }

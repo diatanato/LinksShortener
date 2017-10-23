@@ -60,11 +60,6 @@ namespace LinkShortener.Data.Services
             return await Task<String>.Factory.StartNew(() => entity.ShortLink);
         }
 
-        public Task<IEnumerable<ILinkInformation>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<ILinkInformation>> GetAll(Guid user)
         {
             var links = await mLinksRepository.FindAsync(x => x.User.UserKey == user);
