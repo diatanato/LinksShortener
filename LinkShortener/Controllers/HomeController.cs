@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -9,6 +10,11 @@ namespace LinkShortener.Controllers
     public class HomeController : Controller
     {
         private readonly ILinksService mLinkService;
+        private readonly String[] mUrlStart = 
+        {
+            "http://",
+            "https://"
+        };
 
         public HomeController(ILinksService linkService)
         {
@@ -22,7 +28,7 @@ namespace LinkShortener.Controllers
                 var link = await mLinkService.Get(id);
                 if (link != null)
                 {
-                    return Redirect(link);
+                    return Redirect(mUrlStart.Any(m => link.StartsWith(m)) ? link : mUrlStart[0] + link);
                 }
             }
             return View();

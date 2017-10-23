@@ -49,7 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinksDataContext.cs" />
+    <Compile Include="Models\Click.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Link.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ClicksRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IClicksRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUsersRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ILinksRepository.cs" />
+    <Compile Include="Repositories\LinksRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Services\LinksService.cs" />
   </ItemGroup>
   <ItemGroup>

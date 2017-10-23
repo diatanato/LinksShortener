@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Models\ILink.cs" />
+    <Compile Include="Interfaces\Models\ILinkInformation.cs" />
+    <Compile Include="Interfaces\Models\IStatistic.cs" />
+    <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Services\ILinksService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
