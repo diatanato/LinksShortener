@@ -1,5 +1,5 @@
-﻿import { Component } from "@angular/core";
-import { Http, RequestOptions, URLSearchParams } from "@angular/http";
+﻿import { Component }             from "@angular/core";
+import { Http, URLSearchParams } from "@angular/http";
 
 @Component({
     selector: "shortener",
@@ -33,8 +33,8 @@ export class ShortenerComponent {
         params.set("link", userLink);
 
         this.http.post("/api/links/post", params).subscribe(
-            result => { this.shortLink = this.hostname + "/" + result.json().shortLink;},
-            error => { this.shortLink = null; }
+            result => { this.shortLink = this.hostname + "/" + result.json().shortLink; },
+            error  => { this.shortLink = null; }
         );
         this.userLink = null;
     }

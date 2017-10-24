@@ -25,6 +25,27 @@ namespace LinkShortener.Controllers
             mLinkService = linkService;
         }
 
+        [HttpGet]
+        public async Task<IEnumerable<ILinkInformation>> Statistic()
+        {
+            return await mLinkService.GetAll(UserGuid);
+        }
+    
+        [HttpPost]
+        public async Task<Object> GetLink([FromBody]String id)
+        {
+            String result = null;
+
+            if (!String.IsNullOrWhiteSpace(id))
+            {
+                result = await mLinkService.Get(id);
+            }
+            return new
+            {
+                FullLink = result ?? "/"
+            };
+        }
+
         public async Task<ILink> Post(CreateRequestParameter param)
         {
             Uri uri;
@@ -33,11 +54,6 @@ namespace LinkShortener.Controllers
                 throw new Exception("Incorrect URL");
             }
             return await mLinkService.Create(param.Link, UserGuid);
-        }
-
-        public async Task<IEnumerable<ILinkInformation>> Get()
-        {
-            return await mLinkService.GetAll(UserGuid);
         }
     }
 }

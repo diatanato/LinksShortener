@@ -62,13 +62,15 @@ namespace LinkShortener.Data.Services
 
         public async Task<IEnumerable<ILinkInformation>> GetAll(Guid user)
         {
-            var links = await mLinksRepository.FindAsync(x => x.User.UserKey == user);
-            var result = links.Select(x => new LinkInformation
+            var links = await mLinksRepository.FindAsync(m => m.User.UserKey == user);
+            var result = links
+                .OrderByDescending(m => m.CreationDate)
+                .Select(m => new LinkInformation
             {
-                ShortLink = x.ShortLink,
-                OriginalLink = x.OriginalLink,
-                CreationDate = x.CreationDate.ToString("g"),
-                Count = x.Clicks.Count.ToString()
+                ShortLink    = m.ShortLink,
+                OriginalLink = m.OriginalLink,
+                CreationDate = m.CreationDate.ToString("g"),
+                Count        = m.Clicks.Count.ToString()
             }).ToList();
             return result;
         }

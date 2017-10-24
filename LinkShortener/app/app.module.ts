@@ -8,6 +8,7 @@ import {AppComponent}        from "./components/app/app.component"
 import {NavigationComponent} from "./components/navigation/navigation.component"
 import {ShortenerComponent}  from "./components/shortener/shortener.component"
 import {StatisticComponent}  from "./components/statistic/statistic.component"
+import {RedirectComponent}   from "./components/redirect/redirect.component"
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import {StatisticComponent}  from "./components/statistic/statistic.component"
             { path: "", redirectTo: "shortener", pathMatch: "full" },
             { path: "shortener", component: ShortenerComponent },
             { path: "statistic", component: StatisticComponent },
+            { path: ':id', component: RedirectComponent },
             { path: "**", redirectTo: "shortener" }
         ])
     ],
@@ -25,7 +27,8 @@ import {StatisticComponent}  from "./components/statistic/statistic.component"
         AppComponent,
         NavigationComponent,
         ShortenerComponent,
-        StatisticComponent
+        StatisticComponent,
+        RedirectComponent
     ],
     bootstrap: [
         AppComponent
