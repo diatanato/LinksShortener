@@ -42,7 +42,7 @@ namespace LinkShortener.Data.Services
 
         #region ILinkService
 
-        public async Task<String> Create(String link, Guid user)
+        public async Task<ILink> Create(String link, Guid user)
         {
             var entity = new Link
             {
@@ -57,18 +57,18 @@ namespace LinkShortener.Data.Services
             }
             await mLinksRepository.CreateAsync(entity);
 
-            return await Task<String>.Factory.StartNew(() => entity.ShortLink);
+            return await Task<ILink>.Factory.StartNew(() => entity);
         }
 
         public async Task<IEnumerable<ILinkInformation>> GetAll(Guid user)
         {
             var links = await mLinksRepository.FindAsync(x => x.User.UserKey == user);
-            var result = links.Select(x => new LinkInformationcs
+            var result = links.Select(x => new LinkInformation
             {
                 ShortLink = x.ShortLink,
                 OriginalLink = x.OriginalLink,
-                CreationDate = x.CreationDate,
-                Count = x.Clicks.Count
+                CreationDate = x.CreationDate.ToString("g"),
+                Count = x.Clicks.Count.ToString()
             }).ToList();
             return result;
         }

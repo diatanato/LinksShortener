@@ -15,7 +15,7 @@ namespace LinkShortener.Common.Interfaces.Services
         /// <param name="user">Уникальный идентификатор пользователя, создающего ссылку</param>
         /// <returns></returns>
 
-        Task<String> Create(String link, Guid user);
+        Task<ILink> Create(String link, Guid user);
 
         /// <summary>
         /// Получаем все сгенерированные ссылки для указанного пользователя

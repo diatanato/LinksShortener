@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <h1 for="url">Simplify your links</h1>
+    <div class="input-group">
+        <input [(ngModel)]="userLink" type="text" class="form-control" placeholder="Your original URL here"id="url">
+        <span class="input-group-btn">
+            <button type="submit" class="btn"  (click)="GetShortLink(userLink)">Shorten URL</button>
+        </span>
+    </div>
+    <div>All goo.gl URLs and click analytics are public and can be accessed by anyone</div>
+</div>
+<div style="text-align: -webkit-center;">
+    <h1>{{shortLink}}</h1>
+</div>
+
+<!--<div style="margin-top: 30%; text-align: -webkit-center;">
+    <input [(ngModel)]="userLink" placeholder="Enter your link here...">
+    <button class="btn btn-default" (click)="GetShortLink(userLink)">Shred it!</button>
+</div>
+-->

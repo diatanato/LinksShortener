@@ -53,7 +53,7 @@
     <Compile Include="Generators\HashGenerator.cs" />
     <Compile Include="LinksDataContext.cs" />
     <Compile Include="Models\Click.cs" />
-    <Compile Include="Models\LinkInformationcs.cs" />
+    <Compile Include="Models\LinkInformation.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

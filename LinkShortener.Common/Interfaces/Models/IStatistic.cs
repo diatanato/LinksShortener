@@ -8,7 +8,7 @@ namespace LinkShortener.Common.Interfaces.Models
 {
     public interface IStatistic
     {
-        Int32 Count { get; set; }
-        DateTime CreationDate { get; set; }
+        String Count { get; set; }
+        String CreationDate { get; set; }
     }
 }

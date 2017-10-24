@@ -12,9 +12,6 @@ namespace LinkShortener
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/scripts/modernizr-*"));
-
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/scripts/bootstrap.js",
                       "~/scripts/respond.js"));

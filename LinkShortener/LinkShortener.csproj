@@ -170,7 +170,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\systemjs.config.js" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\systemjs.loader.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -204,13 +204,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="app\services\" />
-    <Folder Include="app\utils\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\components\app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\components\navigation\navigation.component.ts" />
+    <TypeScriptCompile Include="app\components\shortener\shortener.component.ts" />
+    <TypeScriptCompile Include="app\components\statistic\statistic.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
   </ItemGroup>
   <ItemGroup>

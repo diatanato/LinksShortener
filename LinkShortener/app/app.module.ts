@@ -1,19 +1,38 @@
 import {NgModule}      from "@angular/core";
+import {RouterModule}  from '@angular/router';
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule}    from "@angular/http";
+import {FormsModule}   from '@angular/forms';
 
-import {AppComponent}  from "./app.component"
+import {AppComponent}        from "./components/app/app.component"
+import {NavigationComponent} from "./components/navigation/navigation.component"
+import {ShortenerComponent}  from "./components/shortener/shortener.component"
+import {StatisticComponent}  from "./components/statistic/statistic.component"
 
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        FormsModule,
+        RouterModule.forRoot([
+            { path: "", redirectTo: "shortener", pathMatch: "full" },
+            { path: "shortener", component: ShortenerComponent },
+            { path: "statistic", component: StatisticComponent },
+            { path: "**", redirectTo: "shortener" }
+        ])
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        NavigationComponent,
+        ShortenerComponent,
+        StatisticComponent
     ],
     bootstrap: [
         AppComponent
     ],
+    providers: [
+        { provide: "ORIGIN_URL", useValue: location.origin }
+    ]
 })
-export class AppModule {}
+export class AppModule {
+}
