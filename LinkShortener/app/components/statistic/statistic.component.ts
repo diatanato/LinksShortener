@@ -17,7 +17,29 @@ export class LinkInformation {
 
 @Component({
     selector: "statistic",
-    templateUrl: "./statistic.component.html"
+    template: 
+`
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Original URL</th>
+            <th>Creation date</th>
+            <th>Short URL</th>
+            <th>All clicks</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of items">
+            <td><a href="{{item.originalLink}}">{{item.originalLink}}</a></td>
+            <td>{{item.creationDate}}</td>
+            <td><a href="{{item.shortLink}}">{{hostname}}/{{item.shortLink}}</a></td>
+            <td>{{item.count}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+`
 })
 export class StatisticComponent {
     items: LinkInformation[] = [];

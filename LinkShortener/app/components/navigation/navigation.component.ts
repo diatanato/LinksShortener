@@ -1,8 +1,32 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component } from "@angular/core";
 
 @Component({
-    selector: 'navigation',
-    templateUrl: './navigation.component.html',
+    selector: "navigation",
+    template: 
+`
+<div class='navbar navbar-inverse navbar-fixed-top'>
+    <div class="container">
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' [routerLink]="['/shortener']">URL Shortener</a>
+        </div>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav'>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/statistic']">
+                        <span class='glyphicon glyphicon-th-list'></span> Statistics
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+`
 })
 export class NavigationComponent {
 }
